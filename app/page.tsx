@@ -6,6 +6,10 @@ const events = [
   {
     image: "/images/event2.png",
     title: "Event 2",
+    slug: "event-1",
+    loaction: "location-1",
+    date: "Date-1",
+    time: "Time-1",
   },
 ];
 
