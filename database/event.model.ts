@@ -14,7 +14,7 @@ export interface IEvent extends Document {
   mode: string;
   audience: string;
   agenda: string[];
-  organized: string;
+  organizer: string;
   tags: string[];
   createdAt: Date;
   updatedAt: Date;
