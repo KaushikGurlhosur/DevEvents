@@ -81,3 +81,24 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    await connectDB();
+
+    const events = await Event.find().sort({ createdAt: -1 }); // latest events will be at top
+
+    return NextResponse.json(
+      { message: "Events fetched successfully.", events },
+      { status: 200 }
+    );
+  } catch (e) {
+    return NextResponse.json(
+      {
+        message: "Failed to fetch events",
+        error: e instanceof Error ? e.message : "Unknown",
+      },
+      { status: 500 }
+    );
+  }
+}
