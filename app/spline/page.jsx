@@ -1,3 +1,4 @@
+"use client";
 import Spline from "@splinetool/react-spline/next";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "black",
+          background: "transparent",
         }}
       />
     </main>
