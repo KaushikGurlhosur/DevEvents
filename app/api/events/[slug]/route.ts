@@ -4,13 +4,10 @@ import connectDB from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Event from "@/database/event.model";
 
-interface Params {
-  params: {
-    slug: string;
-  };
-}
-
-export async function GET(req: NextRequest, { params }: Params) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   try {
     await connectDB();
 
