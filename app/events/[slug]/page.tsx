@@ -29,6 +29,16 @@ const EventAgenda = ({ agendaItems }: { agendaItems: string[] }) => (
   </div>
 );
 
+const EventTags = ({ tags }: { tags: string[] }) => (
+  <div className="flex flex-row gap-1.5 flex-wrap">
+    {tags.map((tag) => (
+      <div className="pill" key={tag}>
+        {tag}
+      </div>
+    ))}
+  </div>
+);
+
 const EventDetailsPage = async ({
   params,
 }: {
@@ -61,6 +71,8 @@ const EventDetailsPage = async ({
     .split(",")
     .map((item: string) => item.trim())
     .filter(Boolean);
+
+  const tagItems = tags[0].split(",").map((tag: string) => tag.trim());
 
   return (
     <section id="event">
@@ -105,6 +117,13 @@ const EventDetailsPage = async ({
           </section>
 
           <EventAgenda agendaItems={agendaItems} />
+
+          <section>
+            <h2>About the Organizer</h2>
+            <p>{organizer}</p>
+          </section>
+
+          <EventTags tags={tagItems} />
         </div>
 
         {/* Right Side - Booking Form */}
