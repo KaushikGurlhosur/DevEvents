@@ -57,6 +57,11 @@ const EventDetailsPage = async ({
     return notFound();
   }
 
+  const agendaItems = agenda[0]
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
   return (
     <section id="event">
       <div className="header">
@@ -98,6 +103,8 @@ const EventDetailsPage = async ({
               label={audience}
             />
           </section>
+
+          <EventAgenda agendaItems={agendaItems} />
         </div>
 
         {/* Right Side - Booking Form */}
