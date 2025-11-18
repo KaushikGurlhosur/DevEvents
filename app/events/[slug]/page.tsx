@@ -59,7 +59,7 @@ const EventDetailsPage = async ({
 
   const agendaItems = agenda[0]
     .split(",")
-    .map((item) => item.trim())
+    .map((item: string) => item.trim())
     .filter(Boolean);
 
   return (
