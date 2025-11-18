@@ -18,6 +18,17 @@ const EventDetailItem = ({
   </div>
 );
 
+const EventAgenda = ({ agendaItems }: { agendaItems: string[] }) => (
+  <div className="agenda">
+    <h2>Agenda</h2>
+    <ul>
+      {agendaItems.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 const EventDetailsPage = async ({
   params,
 }: {
@@ -74,8 +85,17 @@ const EventDetailsPage = async ({
 
             <EventDetailItem
               icon="/icons/calendar.svg"
-              alt="calender"
+              alt="calendar"
               label={date}
+            />
+            <EventDetailItem icon="/icons/clock.svg" alt="clock" label={time} />
+
+            <EventDetailItem icon="/icons/pin.svg" alt="pin" label={location} />
+            <EventDetailItem icon="/icons/mode.svg" alt="mode" label={mode} />
+            <EventDetailItem
+              icon="/icons/audience.svg"
+              alt="audience"
+              label={audience}
             />
           </section>
         </div>
