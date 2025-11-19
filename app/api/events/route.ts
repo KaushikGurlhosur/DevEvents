@@ -43,6 +43,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // let tags = JSON.parse(formData.get("tags") as string);
+    // let agenda = JSON.parse(formData.get("tags") as string);
+
+    const tags = (formData.get("tags") as string)
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+
+    const agenda = (formData.get("agenda") as string)
+      .split(",")
+      .map((a) => a.trim())
+      .filter(Boolean);
+
     // Convert to ArrayBuffer
     const arrayBuffer = await file.arrayBuffer();
 
@@ -64,7 +77,11 @@ export async function POST(req: NextRequest) {
 
     event.image = (uploadResult as { secure_url: string }).secure_url;
 
-    const createdEvent = await Event.create(event);
+    const createdEvent = await Event.create({
+      ...event,
+      tags: tags,
+      agenda: agenda,
+    });
 
     return NextResponse.json(
       { message: "Event Created Successfully", event: createdEvent },
