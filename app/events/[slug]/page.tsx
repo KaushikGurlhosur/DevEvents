@@ -71,12 +71,12 @@ const EventDetailsPage = async ({
     return notFound();
   }
 
-  // const agendaItems = agenda[0]
-  //   .split(",")
-  //   .map((item: string) => item.trim())
-  //   .filter(Boolean);
+  const agendaItems = agenda[0]
+    .split(",")
+    .map((item: string) => item.trim())
+    .filter(Boolean);
 
-  // const tagItems = tags[0].split(",").map((tag: string) => tag.trim());
+  const tagItems = tags[0].split(",").map((tag: string) => tag.trim());
 
   const bookings = 10;
 
@@ -126,14 +126,14 @@ const EventDetailsPage = async ({
             />
           </section>
 
-          <EventAgenda agendaItems={agenda} />
+          <EventAgenda agendaItems={agendaItems} />
 
           <section>
             <h2>About the Organizer</h2>
             <p>{organizer}</p>
           </section>
 
-          <EventTags tags={tags} />
+          <EventTags tags={tagItems} />
         </div>
 
         {/* Right Side - Booking Form */}
